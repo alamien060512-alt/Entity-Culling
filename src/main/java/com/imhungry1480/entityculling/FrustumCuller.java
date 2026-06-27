@@ -20,7 +20,7 @@ public class FrustumCuller {
             if (distSq > maxDistSq) return true;
         }
 
-        Box box = entity.getVisibilityBoundingBox();
+        Box box = entity.getBoundingBox();
         if (!frustum.isVisible(box)) return true;
 
         return false;
