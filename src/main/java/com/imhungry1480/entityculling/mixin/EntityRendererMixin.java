@@ -11,13 +11,14 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
-@Mixin(EntityRenderDispatcher.class)
+@Mixin(value = EntityRenderDispatcher.class, remap = false)
 public class EntityRendererMixin {
 
     @Inject(
         method = "shouldRender",
         at = @At("HEAD"),
-        cancellable = true
+        cancellable = true,
+        remap = false
     )
     private <E extends Entity> void entityculling_shouldRender(
         E entity,
@@ -26,7 +27,6 @@ public class EntityRendererMixin {
         CallbackInfoReturnable<Boolean> cir
     ) {
         if (!CullConfig.enabled) return;
-
         Vec3d camPos = new Vec3d(x, y, z);
         if (FrustumCuller.shouldCull(entity, frustum, camPos)) {
             cir.setReturnValue(false);
