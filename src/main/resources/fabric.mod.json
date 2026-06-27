@@ -5,8 +5,7 @@
   "name": "Entity Culling",
   "description": "Skips rendering entities outside view frustum and range.",
   "authors": ["ImHungry1480"],
-  "license": "MIT",
-  "icon": "assets/entity-culling/icon.png",
+  "license": "ARR",
   "environment": "client",
   "entrypoints": {
     "client": ["com.imhungry1480.entityculling.EntityCullingMod"]
