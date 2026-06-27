@@ -2,6 +2,7 @@ package com.imhungry1480.entityculling;
 
 import net.minecraft.client.render.Frustum;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.util.math.Box;
 import net.minecraft.util.math.Vec3d;
 
@@ -10,7 +11,7 @@ public class FrustumCuller {
     public static boolean shouldCull(Entity entity, Frustum frustum, Vec3d cameraPos) {
         if (!CullConfig.enabled) return false;
 
-        if (!CullConfig.cullPlayers && entity instanceof net.minecraft.entity.player.PlayerEntity) {
+        if (!CullConfig.cullPlayers && entity instanceof PlayerEntity) {
             return false;
         }
 
